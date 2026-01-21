@@ -1,45 +1,101 @@
-import './cadastro.css';
-import deltaIco from '../../assets/iconmini.png'
+import "./cadastro.css";
+import deltaIco from "../../assets/iconmini.png";
+import InputLabel from "../../components/pages/cadastrar/inputLabels/inputLabel";
+import Btn from "../../components/buttons/btn/btn";
+import { Link, redirect, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { host_backend } from "../../config/config";
 
-import InputLabel from '../../components/pages/cadastrar/inputLabels/inputLabel';
-import Btn from '../../components/buttons/btn/btn';
-import { Link } from "react-router-dom";
+export default function Cadastro() {
+    const { auth, authUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-export default function Cadastro(){
+    function handle_submit(e) {
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+        const usuario = {
+            nome_usuario: formData.get("nome_usuario"),
+            login: formData.get("login"),
+            senha: formData.get("senha"),
+        };
+
+        fetch(`${host_backend}/usuario/create`, {
+            method: "POST",
+            body: JSON.stringify(usuario),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                fetch(`${host_backend}/login`, {
+                    method: "POST",
+                    body: JSON.stringify(usuario),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                })
+                    .then((res) => res.json())
+                    .then((token) => {
+                        localStorage.setItem(
+                            "token",
+                            JSON.stringify({ token: token }),
+                        );
+                        authUser(token);
+                        navigate("/home");
+                    });
+            })
+            .catch((err) => {});
+    }
+
     return (
         <div className="bodyCdtr">
             <div className="border cdtrDiv">
-                <div className='headerCdtr'>
-                    <img src={deltaIco} alt="sla" style={{height: "40px"}}/>
-                    <h3 style={{fontWeight: 600}}> Cadastrar </h3>
+                <div className="headerCdtr">
+                    <img src={deltaIco} alt="sla" style={{ height: "40px" }} />
+                    <h3 style={{ fontWeight: 600 }}> Cadastrar </h3>
                 </div>
-                <div className='mainCdtr'>
-                    <InputLabel 
-                        type={'text'} 
-                        width='90%'
-                        title={'Nome de Usuário'}
-                        placeholder={'Digite o nome do seu perfil'}    
+                <form
+                    className="mainCdtr"
+                    method="post"
+                    onSubmit={handle_submit}
+                >
+                    <InputLabel
+                        name={"nome_usuario"}
+                        type={"text"}
+                        width="90%"
+                        title={"Nome de Usuário"}
+                        placeholder={"Digite o nome do seu perfil"}
                     />
-                    <InputLabel type={'text'} 
-                        width={'90%'}
-                        title={'Login'}
-                        placeholder={'Digite seu Login'}    
+                    <InputLabel
+                        name={"login"}
+                        type={"text"}
+                        width={"90%"}
+                        title={"Login"}
+                        placeholder={"Digite seu Login"}
                     />
 
-                    <InputLabel type={'password'} 
-                        width={'90%'}
-                        title={'Senha'}
-                        placeholder={'Digite sua senha (chave de acesso)'}
-                        maxLength={8} 
+                    <InputLabel
+                        name={"senha"}
+                        type={"password"}
+                        width={"90%"}
+                        title={"Senha"}
+                        placeholder={"Digite sua senha (chave de acesso)"}
+                        maxLength={8}
                     />
-                </div>
-                <div className='footerCdtr'>
-                    <Btn title={'Cadastrar'} className='btnctr'/>
-                </div>
-                <nav>
-                    <Link to="/login" className='linkToLogin'>Já passou por aqui? Entre agora! </Link>
-                </nav>
+                    <div className="footerCdtr">
+                        <Btn title={"Cadastrar"} className="btnctr" />
+                    </div>
+                </form>
             </div>
+
+            <nav>
+                <Link to="/login" className="linkToLogin">
+                    Já passou por aqui? Entre agora!{" "}
+                </Link>
+            </nav>
         </div>
     );
 }

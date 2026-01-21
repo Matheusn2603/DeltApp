@@ -5,13 +5,15 @@ import eyeClosed from '../../../../assets/svgs/eye-closed-svgrepo-com.svg'
 
 import { useState } from 'react';
 
-export default function InputLabel({type, width, title, placeholder, maxLength=15}){
+export default function InputLabel({type, width, title, placeholder, maxLength=15, name}){
     const [theType, setType] = useState(type);
 
     return(
         <div className="inputLabel" style={{width}}>
-            <label style={{fontWeight: 500, textIndent: 10}}> {title} </label>
+            <label style={{fontWeight: 500, textIndent: 10}} htmlFor={"i" + name}> {title} </label>
             <input 
+                name={name}
+                id={"i" + name}
                 type={theType} 
                 style={{width: '100%', height: '100%'}} 
                 className='inptLbl'
