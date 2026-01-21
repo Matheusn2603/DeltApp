@@ -1,0 +1,104 @@
+.modalnotbg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    height: 100dvh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.699);
+    z-index: 999;
+
+    transition: opacity 0.5s ease;
+}
+
+.modalnot{
+    position: relative;
+    height: 600px;
+    width: 600px;
+    background-color: #0D0120;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.visible{
+    opacity: 1;
+}
+
+.hidden{
+    opacity: 0;
+}
+
+.exitModal{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 50px;
+    width: 50px;
+    background: transparent;
+    border: 4px solid #ff0015;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.exitModal:hover{
+    background: #ff0015;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+/* header, body */
+
+.modalNotHeader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.393);
+}
+
+.modalNotBody{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-self: center;
+    width: 100%;
+    height: 85%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.notNotifsForYou{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.notNotifsForYou p{
+    color: rgba(255, 255, 255, 0.464);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.modalNotBody::-webkit-scrollbar {
+    height: 15px;
+}
+
+.modalNotBody::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modalNotBody::-webkit-scrollbar-thumb {
+    background: rgb(255, 0, 0);
+    border-radius: 20px;
+}
+
+@media (max-width: 763px) {
+    .modalnot{
+        width: 450px;
+    }
+}

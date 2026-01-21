@@ -1,0 +1,32 @@
+.communitySearcher{
+    position: relative;
+    bottom: 20px;
+    height: 70%;
+}
+
+.serachAndComs{
+    display: flex;
+    height: 100%;
+    width: 98.5%;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+@media (max-width: 763px) {
+    .serachAndComs{
+        width: 95.4%;
+    }
+}
+
+.serachAndComs::-webkit-scrollbar {
+    height: 15px;
+}
+
+.serachAndComs::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.serachAndComs::-webkit-scrollbar-thumb {
+    background: rgb(229, 255, 0);
+    border-radius: 20px;
+}

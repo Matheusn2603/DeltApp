@@ -1,0 +1,7 @@
+.mainHomeDiv{
+    min-height: 200dvh;
+    width: 100vw;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+}

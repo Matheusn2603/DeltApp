@@ -1,0 +1,72 @@
+.notfMainDiv{
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.412);
+    border-radius: 10px;
+    flex-shrink: 0;
+    gap: 10px;
+}
+
+.notfIcon{
+    height: 100%;
+    width: 100px;
+    background-image: url('../../../../assets/svgs/card_notf.svg');
+    background-position: center;
+    background-size: 50px;
+    background-repeat: no-repeat;
+}
+
+.notfBody{
+    text-indent: 10px;
+    height: 100%;
+    width: 355px;
+    overflow-y: hidden;
+}
+
+.aceptBtn{
+    height: 50px;
+    width: 50px;
+    background-color: transparent;
+    border: 3px solid greenyellow;
+    border-radius: 5px;
+}
+
+.aceptBtn:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color: greenyellow;
+}
+
+.aceptBtn:active{
+    background-color: transparent;
+}
+.deleteBtn{
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+    background-color: transparent;
+    border: 3px solid rgb(255, 47, 47);
+    border-radius: 5px;
+}
+
+.deleteBtn:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color: red;
+}
+
+.deleteBtn:active{
+    background-color: transparent;
+}
+
+@media (max-width: 763px){
+    .aceptBtn{
+        height: 40px;
+    }
+
+    .deleteBtn{
+        height: 40px;
+    }
+}

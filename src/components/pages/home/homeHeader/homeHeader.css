@@ -1,0 +1,61 @@
+.homeHeader{
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: space-between;
+    height: 65px;
+    width: 80%;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.248);
+}
+
+.homeHeaderLogo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navHome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 150px;
+    gap: 10px;
+}
+
+.navBtn{
+    height: 40px;
+    width: 40px;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    border: none;
+    opacity: 0.5;
+    outline: none;
+}
+
+.navBtn:hover{
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.notfs{
+    background-image: url('../../../../assets/svgs/notf.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.msgs{
+    background-image: url('../../../../assets/svgs/mail.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.prof{
+    background-image: url('../../../../assets/svgs/profile.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

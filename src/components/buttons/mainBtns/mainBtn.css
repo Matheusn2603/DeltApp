@@ -1,0 +1,30 @@
+.mainBtn{
+    height: 90px;
+    width: 80%;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 2px solid #ed1b265e;
+    font-size: 18px;
+    outline: none;
+    transition: transform 0.5s ease;
+}
+
+.mainBtn:hover{
+    border-color:red;
+    cursor: pointer;
+
+    transform: scale(1.1);
+}
+
+.mainBtn:active{
+    background-color: red;
+    color: rgb(12, 0, 33);
+    font-weight: 900;
+}
+
+@media (max-width: 763px) {
+    .mainBtn{
+        height: 60px;
+        border-radius: 30px;
+    }
+}

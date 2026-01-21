@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+}
+
+body{
+    height: 100dvh;
+    overflow-x: hidden;
+    margin: 0px;
+    background: #00014a;
+    background: linear-gradient(90deg, rgba(0, 1, 74, 1) 0%, rgb(47, 0, 19) 50%, rgba(52, 0, 59, 1) 100%);
+    background-size: 300% 300%;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    animation: gradientMove 8s ease-in-out infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+html, body {
+    overflow-y: scroll;      
+    scrollbar-width: none;   
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;           
+}

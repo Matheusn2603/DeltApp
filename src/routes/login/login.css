@@ -1,0 +1,78 @@
+.bodyLgn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    width: 100vw;
+    position: relative;
+    bottom: 30px;
+}
+
+.lgnDiv{
+    display: grid;
+    grid-template-rows: 15% 70% 15%;
+    height: 580px;
+    width: 500px;
+    border: 2px solid rgba(255, 255, 255, 0.114); 
+    border-radius: 20px;
+}
+
+.headerLgn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.mainLgn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footerLgn{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btnlgn{
+    position: absolute;
+    top: 0px;
+}
+
+.linkToCdt{
+    position: relative;
+    top: 20px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.514);
+    font-size: 15px;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    font-weight: 700;
+}
+
+.linkToCdt:hover{
+    transform: scale(1.05);
+    color: rgba(255, 0, 0, 0.664);
+}
+
+@media (max-width: 563px) {
+    .lgnDiv{
+        border: none;
+    }
+
+    .mainLgn{
+        width: 80%;
+        align-items: center;
+        justify-self: center;
+    }
+
+    .linkToCdt{
+        top: -10px;
+    }
+}

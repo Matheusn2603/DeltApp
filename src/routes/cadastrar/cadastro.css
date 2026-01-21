@@ -1,0 +1,77 @@
+.bodyCdtr{
+    display: flex;
+    min-height: 100dvh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.cdtrDiv{
+    display: grid;
+    width: 500px;
+    height: 600px;
+    grid-template-rows: 15% 70% 15%;
+    border: 2px solid rgba(255, 255, 255, 0.114); 
+    border-radius: 20px;
+    position: relative;
+    bottom: 20px;
+}
+
+.headerCdtr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.mainCdtr{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footerCdtr{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btnctr{
+    position: absolute;
+    top: 0px;
+}
+
+.linkToLogin{
+    position: relative;
+    top: 20px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.514);
+    font-size: 15px;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    font-weight: 700;
+}
+
+.linkToLogin:hover{
+    transform: scale(1.05);
+    color: rgba(255, 0, 0, 0.664);
+}
+
+@media (max-width: 563px) {
+    .cdtrDiv{
+        border: none;
+    }
+
+    .mainCdtr{
+        width: 80%;
+        align-items: center;
+        justify-self: center;
+    }
+
+    .linkToLogin{
+        top: -10px;
+    }
+}

@@ -1,0 +1,41 @@
+import './home.css';
+import HomeHeader from '../../components/pages/home/homeHeader/homeHeader';
+import HomeBody from '../../components/pages/home/homeBody/homeBody';
+import HomeFooter from '../../components/pages/home/homeFooter/homeFooter';
+
+import ModalNot from '../../components/pages/home/modalNot/modalNot';
+import ModalUser from '../../components/pages/home/modalUser/modalUser';
+
+import { useState } from 'react';
+
+export default function Home(){
+    const [visible, setVisible] = useState('hidden');
+    const [visibleUM, setVisibleUM] = useState('hidden')
+
+    const openModalNotHandle = () => {
+        setVisible('visible');
+    }
+
+    const closeModalNotHandle = () => {
+        setVisible('hidden');
+    }
+
+    const openModalUserHandle = () => {
+        setVisibleUM('visible');
+    }
+
+    const closeModalUserHandle = () => {
+        setVisibleUM('hidden');
+    }
+
+    return (
+        <div className="mainHomeDiv">
+            <ModalNot visible={visible} closeModal={closeModalNotHandle}/>
+            <ModalUser visible={visibleUM} onClose={closeModalUserHandle}/>
+
+            <HomeHeader openModalNotf={openModalNotHandle} openModalUser={openModalUserHandle}/>
+            <HomeBody/>
+            <HomeFooter/>
+        </div>
+    );
+}

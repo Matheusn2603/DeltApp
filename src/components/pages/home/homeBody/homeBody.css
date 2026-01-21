@@ -1,0 +1,199 @@
+.homeBody{
+    height: 1800px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.infoBody{
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 550px;
+    width: 80%;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.333);
+}
+
+.swiper {
+    position: relative;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide .card {
+    width: 60%;
+    height: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.245);
+    border-radius: 10px;
+}
+
+.swiper-slide .cardHeader{
+    padding-top: 20px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.card p{
+    padding: 10px;
+    text-align: justify;
+}
+
+.swiper-pagination-bullet {
+    background: #888;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background: #ff2f2f;
+}
+
+.SearchDiv{
+    position: relative;
+    top: 50px;
+    height: 500px;
+    width: 80%;
+    border: 1px solid rgba(255, 255, 255, 0.358);
+    padding: 20px;
+    border-radius: 10px;
+} 
+
+.sechDivHead{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 20%;
+}
+
+.searcher{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+}
+
+.searcherInput{
+    width: 95%;
+    height: 70%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.295);
+    border-radius: 5px;
+    outline: none;
+    text-indent: 20px;
+    font-size: 16px;
+}
+
+.searchComBtn{
+    height: 85%;
+    width: 50px;
+    margin-left: 10px;
+    background: transparent;
+    background-image: url('../../../../assets//svgs/search.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    border: 3px solid rgba(255, 255, 0, 0.4);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.searchComBtn:hover{
+    transform: scale(1.1);
+    border-color: rgb(255, 225, 0);
+}
+
+.searchComBtn:active{
+    background-color: yellow;
+}
+
+.searchUsBtn{
+    height: 85%;
+    width: 50px;
+    margin-left: 10px;
+    background: transparent;
+    background-image: url('../../../../assets//svgs/search.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    border: 3px solid rgba(0, 255, 191, 0.4);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.searchUsBtn:hover{
+    transform: scale(1.1);
+    border-color: rgb(0, 255, 166);
+}
+
+.searchUsBtn:active{
+    background-color: aquamarine;
+}
+
+@media (max-width: 763px) {
+    .homeBody{
+        height: 1700px;
+    }
+
+    .infoBody{
+        height: 500px;
+    }
+
+    .swiper {
+        width: 400px;
+        height: 500px;
+    }
+
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .swiper-slide .card {
+        width: 400px;
+        height: 75%;
+        object-fit: cover;
+        border: 2px solid rgba(255, 255, 255, 0.245);
+        border-radius: 10px;
+    }
+
+    .swiper-slide .cardHeader{
+        padding-top: 20px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-transform: uppercase;
+    }
+
+    .card p{
+        padding: 10px;
+        text-align: justify;
+    }
+
+    .swiper-pagination-bullet {
+        background: #888;
+        opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #ff2f2f;
+    }
+}

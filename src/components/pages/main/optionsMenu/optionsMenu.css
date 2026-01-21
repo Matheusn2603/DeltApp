@@ -1,0 +1,25 @@
+.optMenus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 500px;
+    width: 500px;
+    gap: 30px;
+}
+
+.borderOpt{
+    border: 2px solid rgba(255, 255, 255, 0.114);
+    border-radius: 20px;
+}
+
+@media (max-width: 1000px) {
+    .optMenus{
+        height: 400px;
+        width: 400px;
+    }
+
+    .borderOpt{
+        border: none;
+    }
+}

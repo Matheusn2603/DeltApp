@@ -1,0 +1,32 @@
+.userSearcher{
+    position: relative;
+    bottom: 20px;
+    height: 70%;
+}
+
+.serachAndusers{
+    display: flex;
+    height: 100%;
+    width: 98.5%;
+    padding: 10px;
+    overflow-x: auto; 
+}
+
+@media (max-width: 763px) {
+    .serachAndComs{
+        width: 95.4%;
+    }
+}
+
+.serachAndusers::-webkit-scrollbar {
+    height: 15px;
+}
+
+.serachAndusers::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.serachAndusers::-webkit-scrollbar-thumb {
+    background: rgb(0, 255, 208);
+    border-radius: 20px;
+}

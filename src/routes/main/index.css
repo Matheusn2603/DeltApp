@@ -1,0 +1,16 @@
+.body{
+    height: 100dvh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+@media (max-width: 1000px) {
+    .body{
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+}

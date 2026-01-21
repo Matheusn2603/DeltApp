@@ -1,0 +1,41 @@
+.welcm{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 450px;
+    width: 450px;
+}
+
+.welcm::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(255, 255, 255, 0.114);
+    border-radius: 20px;
+    animation: spin 6s linear infinite;
+}
+
+.welcm::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(255, 255, 255, 0.114);
+    border-radius: 18px;
+    animation: spin 6s linear infinite reverse;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 1000px) {
+    .welcm{
+        height: 350px;
+        width: 350px;
+        margin-top: 50px;
+    }
+}
