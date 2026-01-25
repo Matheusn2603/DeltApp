@@ -1,6 +1,14 @@
 import "./homeFooter.css";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeFooter() {
+    const navigate = useNavigate();
+
+    function logout() {
+        localStorage.removeItem("token");
+        navigate("/");
+    }
+
     return (
         <footer id="footer">
             <div id="footerContent">
@@ -23,7 +31,9 @@ export default function HomeFooter() {
 
                 <div className="footerSection" id="account">
                     <h4>Conta</h4>
-                    <button id="logoutBtn">Sair da conta</button>
+                    <button id="logoutBtn" onClick={logout}>
+                        Sair da conta
+                    </button>
                 </div>
             </div>
 

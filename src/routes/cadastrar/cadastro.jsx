@@ -2,13 +2,10 @@ import "./cadastro.css";
 import deltaIco from "../../assets/iconmini.png";
 import InputLabel from "../../components/pages/cadastrar/inputLabels/inputLabel";
 import Btn from "../../components/buttons/btn/btn";
-import { Link, redirect, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
 import { host_backend } from "../../config/config";
 
 export default function Cadastro() {
-    const { auth, authUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
     function handle_submit(e) {
@@ -38,12 +35,11 @@ export default function Cadastro() {
                     },
                 })
                     .then((res) => res.json())
-                    .then((token) => {
+                    .then((data) => {
                         localStorage.setItem(
                             "token",
-                            JSON.stringify({ token: token }),
+                            JSON.stringify({ token: data.token }),
                         );
-                        authUser(token);
                         navigate("/home");
                     });
             })
