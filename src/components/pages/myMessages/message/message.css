@@ -1,0 +1,31 @@
+.messageDiv{
+    padding: 10px;
+    position: relative;
+    min-height: 50px;
+    width: 200px;
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+.me{
+    margin-left: auto;
+    background-color: aquamarine;
+}
+
+.other{
+    margin-right: auto;
+    background-color: rgb(255, 0, 93);
+}
+
+.messageDiv p{
+    color: black;
+    font-weight: bold;
+    text-align: justify;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.messageDiv > p {
+    color: black;
+    font-weight: 700;
+}
