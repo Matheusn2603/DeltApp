@@ -41,11 +41,7 @@ export default function Home() {
     return (
         <div className="mainHomeDiv">
             <ModalNot visible={visible} closeModal={closeModalNotHandle} />
-            <ModalUser
-                visible={visibleUM}
-                onClose={closeModalUserHandle}
-                usuario={usuario}
-            />
+            <ModalUser visible={visibleUM} onClose={closeModalUserHandle} />
             <HomeHeader
                 openModalNotf={openModalNotHandle}
                 openModalUser={openModalUserHandle}
