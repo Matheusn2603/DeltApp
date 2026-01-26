@@ -24,6 +24,21 @@ export default function UserSideBar({selectName}){
 
             <div className="userFriendsDiv">
                 <FriendUser name={"Sla 123"} onSelect={selectName}/>
+                <FriendUser name={"OpanCanastar"} onSelect={selectName}/>
+                                <FriendUser name={"Sla 123"} onSelect={selectName}/>
+                <FriendUser name={"OpanCanastar"} onSelect={selectName}/>
+                                <FriendUser name={"Sla 123"} onSelect={selectName}/>
+                <FriendUser name={"OpanCanastar"} onSelect={selectName}/>
+                                <FriendUser name={"Sla 123"} onSelect={selectName}/>
+                <FriendUser name={"OpanCanastar"} onSelect={selectName}/>
+                                <FriendUser name={"Sla 123"} onSelect={selectName}/>
+                <FriendUser name={"OpanCanastar"} onSelect={selectName}/>
+                                <FriendUser name={"Sla 123"} onSelect={selectName}/>
+                <FriendUser name={"OpanCanastar"} onSelect={selectName}/>
+                                <FriendUser name={"Sla 123"} onSelect={selectName}/>
+                <FriendUser name={"OpanCanastar"} onSelect={selectName}/>
+                                <FriendUser name={"Sla 123"} onSelect={selectName}/>
+                <FriendUser name={"OpanCanastar"} onSelect={selectName}/>
             </div>
         </div>
     );
