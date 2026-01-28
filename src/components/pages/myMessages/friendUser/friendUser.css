@@ -1,0 +1,25 @@
+.friendUser{
+    position: relative;
+    left: 10px;
+    width: 90%;
+    height: 50px;
+    flex-shrink: 0;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.449);
+    border-radius: 5px;
+    background-image: url('../../../../assets/svgs/user.svg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 30px;
+    background-position: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.friendUser:hover{
+    border: 1px solid aquamarine;
+}
+
+.friendUser:active{
+    border: 1px solid white;
+}

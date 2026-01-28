@@ -12,15 +12,8 @@ import { jwtDecode } from "jwt-decode";
 export default function Home() {
     const [visible, setVisible] = useState("hidden");
     const [visibleUM, setVisibleUM] = useState("hidden");
-    let usuario;
 
-    useEffect(() => {
-        if (localStorage.getItem("token")) {
-            usuario = jwtDecode(
-                JSON.parse(localStorage.getItem("token")).token,
-            );
-        }
-    });
+    useEffect(() => {});
 
     const openModalNotHandle = () => {
         setVisible("visible");
