@@ -21,7 +21,7 @@ export default function UserSearcher() {
             .then((data) => {
                 setUsuarios(data.results);
             });
-    });
+    }, []);
 
     function render_users() {
         return usuarios.map((el) => (

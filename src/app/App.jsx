@@ -14,20 +14,8 @@ export default function App() {
                 <Route path="/cadastrar" element={<Cadastro />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/home" element={<Home />} />
+                <Route path="/myMessages" element={<MyMessages />} />
             </Routes>
         </BrowserRouter>
     );
-}
-export default function App(){
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Index/>}/>
-        <Route path='/cadastrar' element={<Cadastro/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/home' element={<Home/>}/>
-        <Route path='/myMessages' element={<MyMessages/>}/>
-      </Routes>
-    </BrowserRouter>
-  );
 }
