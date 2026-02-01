@@ -1,21 +1,30 @@
 import "./user.css";
 import userIco from "../../../../assets/svgs/user.svg";
 import { host_backend } from "../../../../config/config";
+import { useState } from "react";
 
 export default function User({ userName, amigo, usuario }) {
-    function request_friendship() {
-        const amizade = {
-            login_usuario: usuario,
-            login_amigo: amigo,
-        };
+    const [isEnviado, setEnviado] = useState(false);
 
-        fetch(`${host_backend}/amizade/ask_amizade`, {
-            method: "POST",
-            body: JSON.stringify(amizade),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
+    function request_friendship() {
+        if (!isEnviado) {
+            const amizade = {
+                login_usuario: usuario,
+                login_amigo: amigo,
+            };
+
+            fetch(`${host_backend}/amizade/ask_amizade`, {
+                method: "POST",
+                body: JSON.stringify(amizade),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }).then(() => {
+                setEnviado(true);
+            });
+        } else {
+            alert("Você só pode enviar uma requisição de amizade");
+        }
     }
 
     return (
@@ -26,7 +35,7 @@ export default function User({ userName, amigo, usuario }) {
             <p style={{ fontWeight: 700 }}> {userName} </p>
             <p>{amigo}</p>
             <button className="addFriend" onClick={request_friendship}>
-                +
+                {isEnviado ? "-" : "+"}
             </button>
         </div>
     );
