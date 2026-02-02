@@ -5,7 +5,7 @@ import UserSideBar from "../../components/pages/myMessages/usersSideBar/usersSid
 
 import { useEffect, useRef, useState } from "react";
 import { jwtDecode } from "jwt-decode";
-import { host_backend } from "../../config/config.js";
+import { host_backend, host_backend_ws } from "../../config/config.js";
 
 export default function MyMessages() {
     const [selectedUser, setSelectedUser] = useState({ name: "", login: "" });
@@ -32,30 +32,40 @@ export default function MyMessages() {
             headers: {
                 "Content-Type": "application/json",
             },
+        }).then(() => {
+            send_message();
         });
     }
 
+    function send_message() {
+        if (socketRef.current.readyState === 1) {
+            socketRef.current.send(
+                JSON.stringify({
+                    emissor: usuario.login,
+                    receptor: selectedUser.login,
+                }),
+            );
+        }
+    }
+
     useEffect(() => {
-        socketRef.current = new WebSocket("ws://localhost:2000");
+        if (socketRef.current === null) {
+            socketRef.current = new WebSocket(host_backend_ws);
 
-        socketRef.current.onopen = () => {
-            console.log("WebSocket Aberto!");
-        };
+            socketRef.current.onopen = () => {
+                console.log("WebSocket Aberto!");
+            };
 
-        socketRef.current.onmessage = (res) => {
-            const data = JSON.parse(res.data).results;
-            setMensagens(data);
-        };
-    }, []);
+            socketRef.current.onmessage = (res) => {
+                const data = JSON.parse(res.data).results;
+                setMensagens(data);
+            };
+        } else {
+            send_message();
+        }
+    }, [selectedUser.name]);
 
     function render_messages() {
-        socketRef.current.send(
-            JSON.stringify({
-                emissor: usuario.login,
-                receptor: selectedUser.login,
-            }),
-        );
-
         if (mensagens.length > 0) {
             return mensagens.map((mensagem, ind) => {
                 if (mensagem.emissor == usuario.login) {

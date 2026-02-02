@@ -20,7 +20,7 @@ export default function ModalNot({ visible, closeModal }) {
             .then((data) => {
                 setNotificacoes(data.results);
             });
-    });
+    }, []);
 
     function render_notificacoes() {
         if (notificacoes.length > 0) {
