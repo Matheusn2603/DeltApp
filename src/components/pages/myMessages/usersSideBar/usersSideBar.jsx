@@ -28,6 +28,7 @@ export default function UserSideBar({ selectName }) {
             <FriendUser
                 name={amigo.nome_usuario}
                 login={amigo.login}
+                id_amizade={amigo.id_amizade}
                 onSelect={selectName}
                 key={amigo.login}
             />
