@@ -1,34 +1,55 @@
-import './comSideBar.css';
-import { useState } from 'react';
+import "./comSideBar.css";
+import { useState } from "react";
 
-import ComUser from '../comUser/comUser';
-import comP from '../../../../assets/comP.png';
-import { useNavigate } from 'react-router-dom';
+import ComUser from "../comUser/comUser";
+import comP from "../../../../assets/comP.png";
+import { useNavigate } from "react-router-dom";
 
-import sideRight from '../../../../assets/svgs/sideRight.svg';
+import sideRight from "../../../../assets/svgs/sideRight.svg";
 
-export default function ComSideBar({selectName, openCreate}){
-    const [openSideBar, setOpenSideBar] = useState('closed');
+export default function ComSideBar({
+    selectName,
+    openCreateComm,
+    openCreateTopico,
+}) {
+    const [openSideBar, setOpenSideBar] = useState("closed");
     const navigate = useNavigate();
 
     return (
         <div className={`comSideBar ${openSideBar}`}>
-            <button className="pushComSideBarBtn"
+            <button
+                className="pushComSideBarBtn"
                 onClick={() => {
-                    if(openSideBar == 'closed'){
-                        setOpenSideBar('opened');
-                    }else{
-                        setOpenSideBar('closed');
+                    if (openSideBar == "closed") {
+                        setOpenSideBar("opened");
+                    } else {
+                        setOpenSideBar("closed");
                     }
                 }}
-            > <img src={sideRight} style={{height: '30px'}}/> </button>
+            >
+                <img src={sideRight} style={{ height: "30px" }} />{" "}
+            </button>
 
             <div className="comSdBarHeader">
-                <p style={{fontWeight: 'bold', fontSize: '25px', marginLeft: '15px'}}> Minhas Comunidades</p>
-                <button 
-                    className="createCom"
-                    onClick={openCreate}
-                > + Criar uma comunidade </button>
+                <p
+                    style={{
+                        fontWeight: "bold",
+                        fontSize: "25px",
+                        marginLeft: "15px",
+                    }}
+                >
+                    {" "}
+                    Minhas Comunidades
+                </p>
+                <button className="createCom" onClick={openCreateComm}>
+                    + Criar uma comunidade
+                </button>
+                <button
+                    className="createTopicoButton"
+                    onClick={openCreateTopico}
+                >
+                    + Criar Tópico
+                </button>
             </div>
 
             <div className="comFriendsDiv">
@@ -45,12 +66,15 @@ export default function ComSideBar({selectName, openCreate}){
                 <ComUser name={"Jogos Eletrônicos"} onSelect={selectName}/>
                 <ComUser name={"Jogos Eletrônicos"} onSelect={selectName}/> */}
                 <img src={comP} alt="" />
-                <button 
+                <button
                     className="exploreBtn"
                     onClick={() => {
-                        navigate("/myComms")
+                        navigate("/myComms");
                     }}
-                > Explorar </button>
+                >
+                    {" "}
+                    Explorar{" "}
+                </button>
             </div>
         </div>
     );

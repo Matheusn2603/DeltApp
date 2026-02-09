@@ -1,29 +1,40 @@
-import './myMessages.css';
-import Message from '../../components/pages/myMessages/message/message';
-import UserSideBar from '../../components/pages/myMessages/usersSideBar/usersSideBar.jsx';
-import CreateCommModal from '../../components/pages/myMessages/createCommModal/createCommModal.jsx';
+import "./myMessages.css";
+import Message from "../../components/pages/myMessages/message/message";
+import UserSideBar from "../../components/pages/myMessages/usersSideBar/usersSideBar.jsx";
+import CreateCommModal from "../../components/pages/myMessages/createCommModal/createCommModal.jsx";
 
-import { useState, useEffect, useRef, use } from 'react';
+import { useState, useEffect, useRef, use } from "react";
 import { jwtDecode } from "jwt-decode";
-import ComSideBar from '../../components/pages/myMessages/comSideBar/comSideBar.jsx';
+import ComSideBar from "../../components/pages/myMessages/comSideBar/comSideBar.jsx";
 
 import { host_backend, host_backend_ws } from "../../config/config.js";
 import { io } from "socket.io-client";
+import CreateTopicoModal from "../../components/pages/myMessages/createTopicoModal/createTopicoModal.jsx";
 
 export default function MyMessages() {
     const [selectedUser, setSelectedUser] = useState({ name: "", login: "" });
     const [selectedComm, setSelectedComm] = useState("");
 
-    const [openModal, setOpenModal] = useState('closedModal');
+    const [openModalComm, setOpenModalComm] = useState("closedModal");
 
-    const handlerOpenModal = () => {
-        setOpenModal('openedModal');
+    const [openModalTopico, setOpenModalTopico] = useState("closedModal");
+
+    const handlerOpenModalComm = () => {
+        setOpenModalComm("openedModal");
     };
 
-    const handlerClosedModal = () => {
-        setOpenModal('closedModal');
+    const handlerClosedModalComm = () => {
+        setOpenModalComm("closedModal");
     };
-    
+
+    const handlerOpenModalTopico = () => {
+        setOpenModalTopico("openedModal");
+    };
+
+    const handlerClosedModalTopico = () => {
+        setOpenModalTopico("closedModal");
+    };
+
     const [mensagens, setMensagens] = useState([]);
     const usuario = jwtDecode(JSON.parse(localStorage.getItem("token")).token);
     const socketRef = useRef(null);
@@ -55,7 +66,7 @@ export default function MyMessages() {
             });
 
             socketRef.current.on("receber_mensagem", (data) => {
-                setMensagens((mensagens) => [...mensagens, data]);
+                setMensagens((mensagens) => [...mensagens, JSON.parse(data)]);
             });
         } else {
             if (selectedUser.login != "") {
@@ -87,7 +98,11 @@ export default function MyMessages() {
             return mensagens.map((mensagem, ind) => {
                 if (mensagem.emissor == usuario.login) {
                     return (
-                        <Message type="me" text={mensagem.conteudo} key={ind} />
+                        <Message
+                            type="me"
+                            text={mensagem.conteudo}
+                            key={mensagem.id_mensagem}
+                        />
                     );
                 } else {
                     return (
@@ -105,8 +120,18 @@ export default function MyMessages() {
     return (
         <div className="bodyMessages">
             <UserSideBar selectName={setSelectedUser} />
-            <ComSideBar openCreate={handlerOpenModal}/>
-            <CreateCommModal situation={openModal} onClose={handlerClosedModal}/>
+            <ComSideBar
+                openCreateComm={handlerOpenModalComm}
+                openCreateTopico={handlerOpenModalTopico}
+            />
+            <CreateCommModal
+                situation={openModalComm}
+                onClose={handlerClosedModalComm}
+            />
+            <CreateTopicoModal
+                situation={openModalTopico}
+                onClose={handlerClosedModalTopico}
+            />
 
             {selectedUser.name !== "" && (
                 <div className="chatDiv">
