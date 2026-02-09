@@ -20,6 +20,17 @@ export default function User({ userName, amigo, usuario }) {
                     "Content-Type": "application/json",
                 },
             }).then(() => {
+                const conversa = { isGroup: false };
+
+                fetch(`${host_backend}/conversa/create`, {
+                    method: "POST",
+                    body: JSON.stringify(conversa),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }).then(() => {
+                    console.log("Sucesso!");
+                });
                 setEnviado(true);
             });
         } else {
