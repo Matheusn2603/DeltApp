@@ -26,7 +26,7 @@ export default function HomeFooter() {
                         com gostos em comum. Nosso objetivo é unir tecnologia e
                         criatividade em um só lugar.
                     </p>
-                    <p> Versão: 0.5.1 (BETA)</p>
+                    <p> Versão: 1.0 </p>
                 </div>
 
                 <div className="footerSection" id="account">

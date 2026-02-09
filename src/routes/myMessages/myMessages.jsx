@@ -1,19 +1,29 @@
-import "./myMessages.css";
+import './myMessages.css';
+import Message from '../../components/pages/myMessages/message/message';
+import UserSideBar from '../../components/pages/myMessages/usersSideBar/usersSideBar.jsx';
+import CreateCommModal from '../../components/pages/myMessages/createCommModal/createCommModal.jsx';
 
-import Message from "../../components/pages/myMessages/message/message";
-import UserSideBar from "../../components/pages/myMessages/usersSideBar/usersSideBar.jsx";
-
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect, useRef, use } from 'react';
 import { jwtDecode } from "jwt-decode";
+import ComSideBar from '../../components/pages/myMessages/comSideBar/comSideBar.jsx';
+
 import { host_backend, host_backend_ws } from "../../config/config.js";
 import { io } from "socket.io-client";
 
 export default function MyMessages() {
-    const [selectedUser, setSelectedUser] = useState({
-        name: "",
-        login: "",
-        id_amizade: 0,
-    });
+    const [selectedUser, setSelectedUser] = useState({ name: "", login: "" });
+    const [selectedComm, setSelectedComm] = useState("");
+
+    const [openModal, setOpenModal] = useState('closedModal');
+
+    const handlerOpenModal = () => {
+        setOpenModal('openedModal');
+    };
+
+    const handlerClosedModal = () => {
+        setOpenModal('closedModal');
+    };
+    
     const [mensagens, setMensagens] = useState([]);
     const usuario = jwtDecode(JSON.parse(localStorage.getItem("token")).token);
     const socketRef = useRef(null);
@@ -95,6 +105,9 @@ export default function MyMessages() {
     return (
         <div className="bodyMessages">
             <UserSideBar selectName={setSelectedUser} />
+            <ComSideBar openCreate={handlerOpenModal}/>
+            <CreateCommModal situation={openModal} onClose={handlerClosedModal}/>
+
             {selectedUser.name !== "" && (
                 <div className="chatDiv">
                     <div className="chatHeader" style={{ marginTop: "6px" }}>

@@ -5,6 +5,8 @@ import FriendUser from "../friendUser/friendUser";
 import { host_backend } from "../../../../config/config";
 import { jwtDecode } from "jwt-decode";
 
+import sideLeft from '../../../../assets/svgs/sideLeft.svg';
+
 export default function UserSideBar({ selectName }) {
     const [openSideBar, setOpenSideBar] = useState("closed");
     const usuario = jwtDecode(JSON.parse(localStorage.getItem("token")).token);
@@ -47,8 +49,7 @@ export default function UserSideBar({ selectName }) {
                     }
                 }}
             >
-                {" "}
-                {"<"}{" "}
+                <img src={sideLeft} style={{height: '30px'}}/>
             </button>
 
             <div className="userSdBarHeader">
