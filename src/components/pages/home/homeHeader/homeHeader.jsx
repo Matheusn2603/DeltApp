@@ -1,7 +1,10 @@
 import './homeHeader.css';
 import deltaIco from '../../../../assets/iconmini.png';
+import { useNavigate } from 'react-router-dom';
 
 export default function HomeHeader({openModalNotf, openModalUser}){
+    const navigate = useNavigate();
+
     return (
         <div className="homeHeader">
             <div className="homeHeaderLogo">
@@ -17,7 +20,11 @@ export default function HomeHeader({openModalNotf, openModalUser}){
                         }
                     }
                 ></button>
-                <button className='navBtn msgs'></button>
+                <button className='navBtn msgs'
+                    onClick={() => {
+                        navigate("/myMessages")
+                    }}
+                ></button>
                 <button 
                     className='navBtn prof'
                     onClick={

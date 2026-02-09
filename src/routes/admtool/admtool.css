@@ -1,0 +1,285 @@
+.admToolBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    background-color: rgb(29, 29, 29);
+    height: 100dvh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.admToolHeader{
+    display: flex;
+    height: 105px;
+    width: 80%;
+    border-bottom: 2px solid #4F4F4F;
+}
+
+.iconTitleAdm{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+    width: 40%;
+}
+
+.iconTitleAdm p{
+    font-weight: 900;
+    font-size: 20px;
+    color: #4F4F4F;
+}
+
+.banRules{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 550px;
+    width: 550px;
+    margin-left: 50px;
+}
+
+.banRules p{
+    color: #7b7b7b;
+    font-weight: 900;
+    text-align: justify;
+}
+
+.banRules li{
+    color: #7b7b7b;
+    font-weight: 900;
+    text-align: justify;
+    padding: 5px;
+}
+
+.toolsmain{
+    display: flex;
+    gap: 20px;
+    width: 80%;
+    height: 100%;
+}
+
+.infoUserTool{
+    height: 100%;
+    width: 70%;
+    padding: 8px;
+}
+
+.userNameInp{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    background-color: transparent;
+    height: 35px;
+    width: 400px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #4F4F4F;
+    border-radius: 5px;
+    background-image: url('../../assets/svgs/user_tools.svg');
+    background-repeat: no-repeat;
+    background-position: center left;
+    text-indent: 30px;
+    background-size: 20px;
+    padding-right: 5px;
+}
+
+.commNameInp{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    background-color: transparent;
+    height: 35px;
+    width: 400px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #4F4F4F;
+    border-radius: 5px;
+    background-image: url('../../assets/svgs/comm_tool.svg');
+    background-repeat: no-repeat;
+    background-position: center left;
+    text-indent: 30px;
+    background-size: 20px;
+    padding-right: 5px;
+}
+
+.infoCommTool p{
+    position: absolute;
+    bottom: 2px;
+    right: 30px;
+    color: #4F4F4F;
+    font-weight: 900;
+}
+
+.infoUserTool p{
+    color: #4F4F4F;
+    font-weight: 900;
+}
+
+.infoUserLabel{
+    position: absolute;
+    right: 200px;
+    top: 60px;
+}
+
+.slotsDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+    gap: 90px;
+}
+
+.tools{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.slotTool{
+    border-radius: 5px;
+    border: 4px solid #4F4F4F;
+    height: 200px;
+    width: 100%;
+    padding: 10px;
+    position: relative;
+}
+
+.toolText{
+    font-weight: 900;
+    font-size: 20px;
+    color: #8b8b8b;
+    position: relative;
+    bottom: 70px;
+}
+
+.idSlc{
+    position: absolute;
+    top: 15px;
+    background-color: transparent;
+    border: 1px solid #4F4F4F;
+    height: 40px;
+    width: 150px;
+    outline: none;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.idSlc option{
+    background-color: black;
+}
+
+.BanBtn{
+    background-color: rgb(255, 0, 81);
+    color: #000000;
+    font-weight: 600;
+    height: 40px;
+    width: 150px;
+    font-size: 15px;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    border: none;
+    cursor: pointer;
+}
+
+.saveBtn{
+    background-color: rgb(0, 191, 255);
+    color: #000000;
+    font-weight: 600;
+    height: 40px;
+    width: 150px;
+    font-size: 15px;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    border: none;
+    cursor: pointer;
+}
+
+.saveBtn:hover{
+    border: 2px solid rgb(0, 191, 255);
+    background-color: transparent;
+    color: white
+}
+
+.saveBtn:active{
+    background-color: rgb(0, 191, 255);
+    color: #000000;
+}
+
+.toolsBtnsDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: absolute;
+    bottom: 10px;
+}
+
+.BanBtn:hover{
+    border: 2px solid rgb(255, 0, 81);
+    background-color: transparent;
+    color: white
+}
+
+.BanBtn:active{
+    background-color: rgb(255, 0, 81);
+    color: #000000;
+}
+
+@media (max-width: 1300px) {
+    .userNameInp{
+        width: 200px;
+    }
+
+    .commNameInp{
+        width: 200px;
+    }
+
+    .infoUserLabel{
+        position: absolute;
+        right: 10px;
+        top: 60px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .banRules{
+        display: none;
+    }
+
+    .tools{
+        margin-top: -40px;
+    }
+
+    .slotsDiv{
+        height: 100%;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .infoUserLabel{
+        position: absolute;
+        right: 45px;
+        top: 50px;
+    }
+
+    .infoUserLabel p{
+        font-size: 13px;
+    }
+
+    .slotTool{
+        border-radius: 5px;
+        border: 4px solid #4F4F4F;
+        height: 160px;
+        width: 100%;
+        margin-top: 50px;
+        padding: 10px;
+        position: relative;
+    }
+}

@@ -4,4 +4,18 @@
     display: flex;
     /* align-items: center; */
     flex-direction: column;
+    overflow-y: auto;
+}
+.mainHomeDiv::-webkit-scrollbar {
+    width: 15px;   /* SCROLL VERTICAL */
+    height: 15px;  /* SCROLL HORIZONTAL (opcional) */
+}
+
+.mainHomeDiv::-webkit-scrollbar-track {
+    background: white;
+}
+
+.mainHomeDiv::-webkit-scrollbar-thumb {
+    background: rgb(255, 0, 0);
+    border-radius: 20px;
 }

@@ -1,0 +1,120 @@
+.modalCreateCommBg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    height: 100dvh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.589);
+    z-index: 999;
+    transition: opacity 0.5s ease;
+}
+
+.openedModal{
+    opacity: 1;
+}
+
+.closedModal{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modalCreateComm{
+    position: relative;
+    height: 300px;
+    width: 500px;
+    background-color: rgb(16, 8, 44);
+    border-radius: 20px;
+}
+
+.modalCommHeader{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 100px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.284);
+}
+
+.createComm{
+    position: relative;
+    left: 330px;
+    height: 50px;
+    width: 125px;
+    background-color: yellow;
+    border-radius: 5px;
+    color: black;
+    font-weight: 900;
+    border: none;
+    cursor: pointer;
+}
+
+.createComm:hover{
+    background-color: transparent;
+    color: white;
+    border: 2px solid yellow;
+}
+
+.createComm:active{
+    background-color: yellow;
+    color: black;
+}
+
+/* .commIco{
+    animation: comm 1s linear infinite;
+} */
+
+.modalCommBody{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 200px;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.modalCommBody label{
+    font-weight: 900;
+}
+
+.commNameInput{
+    height: 50px;
+    width: 450px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.392);
+    border-radius: 5px;
+    outline: none;
+    text-indent: 20px;
+    font-size: 15px;
+}
+
+.checkModalComm{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes comm {
+    0%, 50%{
+        transform: scaleY(0.5);
+        rotate: 0deg;
+    }
+
+    25%{
+        transform: scaleY(1.1);
+        rotate: -20deg;
+    }
+
+    75%{
+        transform: scaleY(1.1);
+        rotate: 20deg; 
+    }
+}

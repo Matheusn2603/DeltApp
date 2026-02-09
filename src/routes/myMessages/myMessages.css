@@ -23,6 +23,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+    margin-left: 30px;
 }
 
 .chatBody{
@@ -119,6 +120,10 @@
 }
 
 .warnMsgs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column ;
     padding: 10px;
     height: 500px;
     width: 700px;
@@ -129,6 +134,7 @@
 .warnMsgs p{
     font-weight: 700;
     font-size: 20px;
+    color: rgba(255, 255, 255, 0.274);
 }
 
 @media (max-width: 963px) {

@@ -1,0 +1,162 @@
+.mainComm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    width: 100vw;
+}
+
+.commChatDiv{
+    height: 90%;
+    width: 1000px;
+    margin-right: 200px;
+    margin-bottom: 50px;
+}
+
+.commHeader{
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: 100px;
+}
+
+.commChat{
+    width: 100%;
+    height: 90%;
+    border: 2px solid rgba(255, 255, 255, 0.044);
+}
+
+.chatGeral{
+    width: 100%;
+    height: 85%;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.chatGeral::-webkit-scrollbar {
+    height: 15px;
+}
+
+.chatGeral::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chatGeral::-webkit-scrollbar-thumb {
+    background: rgb(238, 255, 0);
+    border-radius: 20px;
+}
+
+.messageSend{
+    width: 100%;
+    height: 75px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.inputSend{
+    height: 100%;
+    width: 80%;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.467);
+    outline: none;
+    border-radius: 3px;
+    text-indent: 20px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.sendBtnComm{
+    background-color: rgb(255, 0, 93);
+    border: none;
+    outline: none;
+    width: 100px;
+    border-radius: 5px;
+    color: black;
+    font-weight: 900;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.sendBtnComm:hover{
+    background-color: transparent;
+    border: 2px solid rgb(255, 0, 93);
+    color: white;
+    cursor: pointer;
+}
+
+.sendBtnComm:active{
+    background-color: rgb(255, 0, 93);
+    color: black;
+    font-weight: 900;
+}
+
+.chatMsg{
+    font-size: 15px;
+    color: rgb(190, 190, 190);
+    text-align: justify;
+}
+
+.comms{
+    position: fixed;
+    right: 0;
+    height: 100%;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.71);
+}
+
+.header2{
+    height: 75px;
+}
+
+.pushCommSideBarBtn{
+    display: none;
+    height: 50px;
+    width: 50px;
+    background-color: yellow;
+    border-radius: 50%;
+    position: absolute;
+    left: -50px;              
+    top: 50%;              
+    transform: translateY(-50%);
+    border: none;
+    cursor: pointer;
+}
+
+.pushCommSideBarBtn:active{
+    background-color: rgb(190, 155, 0);
+}
+
+.comms.opened .pushCommSideBarBtn{
+    transform: translateY(-50%) rotate(180deg);
+}
+
+
+@media (max-width: 1463px) {
+    .commChatDiv{
+        min-width: 450px;
+        position: relative;
+        left: 100px;
+    }
+
+    .comms.closed {
+        right: -300px;
+    }
+
+    .comms.opened {
+        right: 0;
+    }
+
+    .pushCommSideBarBtn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
