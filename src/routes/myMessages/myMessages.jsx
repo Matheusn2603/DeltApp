@@ -8,6 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import ComSideBar from '../../components/pages/myMessages/comSideBar/comSideBar.jsx';
 
 import { host_backend, host_backend_ws } from "../../config/config.js";
+import { io } from "socket.io-client";
 
 export default function MyMessages() {
     const [selectedUser, setSelectedUser] = useState({ name: "", login: "" });
@@ -31,6 +32,7 @@ export default function MyMessages() {
     function handleSendMessage(e) {
         e.preventDefault();
         const now = new Date();
+        const salaId = selectedUser.id_amizade;
 
         const formData = new FormData(e.currentTarget);
         const mensagem = {
@@ -38,44 +40,45 @@ export default function MyMessages() {
             emissor: usuario.login,
             conteudo: formData.get("conteudo"),
             data_envio: now.toISOString(),
+            salaId: salaId,
         };
 
-        fetch(`${host_backend}/mensagem/create`, {
-            method: "POST",
-            body: JSON.stringify(mensagem),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }).then(() => {
-            send_message();
-        });
-    }
-
-    function send_message() {
-        if (socketRef.current.readyState === 1) {
-            socketRef.current.send(
-                JSON.stringify({
-                    emissor: usuario.login,
-                    receptor: selectedUser.login,
-                }),
-            );
-        }
+        socketRef.current.emit("enviar_mensagem", mensagem);
     }
 
     useEffect(() => {
         if (socketRef.current === null) {
-            socketRef.current = new WebSocket(host_backend_ws);
+            socketRef.current = io(host_backend_ws);
 
-            socketRef.current.onopen = () => {
-                console.log("WebSocket Aberto!");
-            };
+            socketRef.current.on("connect", () => {
+                console.log("Conectado com sucesso!");
+            });
 
-            socketRef.current.onmessage = (res) => {
-                const data = JSON.parse(res.data).results;
-                setMensagens(data);
-            };
+            socketRef.current.on("receber_mensagem", (data) => {
+                setMensagens((mensagens) => [...mensagens, data]);
+            });
         } else {
-            send_message();
+            if (selectedUser.login != "") {
+                const body = {
+                    emissor: usuario.login,
+                    receptor: selectedUser.login,
+                };
+
+                fetch(host_backend + "/mensagem/get_two_users_messages", {
+                    body: JSON.stringify(body),
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        socketRef.current.emit("entrar_conversa", {
+                            salaId: selectedUser.id_amizade,
+                        });
+                        setMensagens(data.results);
+                    });
+            }
         }
     }, [selectedUser.name]);
 
@@ -84,11 +87,7 @@ export default function MyMessages() {
             return mensagens.map((mensagem, ind) => {
                 if (mensagem.emissor == usuario.login) {
                     return (
-                        <Message
-                            type="me"
-                            text={mensagem.conteudo}
-                            key={mensagem.id_mensagem}
-                        />
+                        <Message type="me" text={mensagem.conteudo} key={ind} />
                     );
                 } else {
                     return (

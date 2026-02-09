@@ -1,12 +1,12 @@
 import "./friendUser.css";
 
-export default function FriendUser({ name, login, onSelect }) {
+export default function FriendUser({ name, login, id_amizade, onSelect }) {
     return (
         <div>
             <button
                 className="friendUser"
                 onClick={() => {
-                    onSelect({ name, login });
+                    onSelect({ name, login, id_amizade });
                 }}
             >
                 {" "}
