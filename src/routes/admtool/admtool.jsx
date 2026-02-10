@@ -8,11 +8,13 @@ import { host_backend } from "../../config/config";
 import { useEffect, useState } from "react";
 
 export default function AdmTool() {
+    const userToken = JSON.parse(localStorage.getItem("token")).token;
     const [selectedLogin, setSelectedLogin] = useState("");
     const [selectedId, setSelectedId] = useState("");
     const [usuarios, setUsuarios] = useState([]);
     const [comunidades, setComunidades] = useState([]);
 
+    console.log(userToken);
     useEffect(() => {
         fetch(host_backend + "/usuario/get_all")
             .then((res) => res.json())
@@ -35,17 +37,25 @@ export default function AdmTool() {
         if (confirm) {
             fetch(host_backend + "/usuario/delete/" + selectedLogin, {
                 method: "DELETE",
+                headers: {
+                    Authorization: userToken,
+                },
             })
-                .then(() => {
-                    alert("Usuário banido com sucesso!");
-                    fetch(host_backend + "/usuario/get_all")
-                        .then((res) => res.json())
-                        .then((data) => {
-                            setUsuarios(data.results);
-                        });
+                .then((res) => {
+                    if (res.status === 401) {
+                        alert("Acesso negado!");
+                    } else {
+                        alert("BANIDO!");
+
+                        fetch(host_backend + "/usuario/get_all")
+                            .then((res) => res.json())
+                            .then((data) => {
+                                setComunidades(data.results);
+                            });
+                    }
                 })
-                .catch((err) => {
-                    alert("Houve um erro ao deletar usuário: " + err);
+                .catch(() => {
+                    alert("Houve um erro ao banir usuário!");
                 });
         }
     };
@@ -58,18 +68,25 @@ export default function AdmTool() {
         if (confirm) {
             fetch(host_backend + "/comunidade/delete/" + selectedId, {
                 method: "DELETE",
+                headers: {
+                    Authorization: userToken,
+                },
             })
-                .then(() => {
-                    alert("Comunidade excluida com sucesso!");
+                .then((res) => {
+                    if (res.status === 401) {
+                        alert("Acesso negado!");
+                    } else {
+                        alert("Sucesso remover comunidade!");
 
-                    fetch(host_backend + "/comunidade/get_all")
-                        .then((res) => res.json())
-                        .then((data) => {
-                            setComunidades(data.results);
-                        });
+                        fetch(host_backend + "/comunidade/get_all")
+                            .then((res) => res.json())
+                            .then((data) => {
+                                setComunidades(data.results);
+                            });
+                    }
                 })
-                .catch((err) => {
-                    alert("Houve um erro ao deletar comunidade: " + err);
+                .catch(() => {
+                    alert("Houve um erro ao remover comunidade!");
                 });
         }
     };
@@ -78,18 +95,26 @@ export default function AdmTool() {
         const usuario_nome = document.getElementById("nome_usuario");
         const usuario = { nome_usuario: usuario_nome.value };
 
-        fetch(host_backend + "/usuario/update_name/" + selectedLogin, {
-            method: "PUT",
-            body: JSON.stringify(usuario),
-            headers: {
-                "Content-Type": "application/json",
+        fetch(
+            host_backend + "/usuario/update_name_restricted/" + selectedLogin,
+            {
+                method: "PUT",
+                body: JSON.stringify(usuario),
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: userToken,
+                },
             },
-        })
-            .then(() => {
-                alert("Nome de usuário alterado com sucesso!");
+        )
+            .then((res) => {
+                if (res.status === 401) {
+                    alert("Acesso negado!");
+                } else {
+                    alert("Sucesso ao alterar usuário");
+                }
             })
             .catch(() => {
-                alert("Houve um erro ao alterar nome de usuario!");
+                alert("Houve um erro ao alterar nome de usuário!");
             });
     };
 
@@ -102,10 +127,15 @@ export default function AdmTool() {
             body: JSON.stringify(comunidade),
             headers: {
                 "Content-Type": "application/json",
+                Authorization: userToken,
             },
         })
-            .then(() => {
-                alert("Nome de comunidade alterado com sucesso!");
+            .then((res) => {
+                if (res.status === 401) {
+                    alert("Acesso negado!");
+                } else {
+                    alert("Sucesso ao alterar comunidade!");
+                }
             })
             .catch(() => {
                 alert("Houve um erro ao alterar nome de comunidade!");

@@ -1,4 +1,4 @@
-.homeHeader{
+.homeHeader {
     display: flex;
     align-items: center;
     align-self: center;
@@ -8,22 +8,22 @@
     border-bottom: 2px solid rgba(255, 255, 255, 0.248);
 }
 
-.homeHeaderLogo{
+.homeHeaderLogo {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.navHome{
+.navHome {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 150px;
+    width: 170px;
     gap: 10px;
 }
 
-.navBtn{
+.navBtn {
     height: 40px;
     width: 40px;
     background: transparent;
@@ -34,27 +34,34 @@
     outline: none;
 }
 
-.navBtn:hover{
+.navBtn:hover {
     transform: scale(1.1);
     opacity: 1;
 }
 
-.notfs{
-    background-image: url('../../../../assets/svgs/notf.svg');
+.notfs {
+    background-image: url("../../../../assets/svgs/notf.svg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.msgs{
-    background-image: url('../../../../assets/svgs/mail.svg');
+.msgs {
+    background-image: url("../../../../assets/svgs/mail.svg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.prof{
-    background-image: url('../../../../assets/svgs/profile.svg');
+.prof {
+    background-image: url("../../../../assets/svgs/profile.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.admTools {
+    background-image: url("../../../../assets/svgs/malwareIcoRed.svg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

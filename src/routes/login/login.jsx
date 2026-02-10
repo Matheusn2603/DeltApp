@@ -26,11 +26,15 @@ export default function Login() {
         })
             .then((res) => res.json())
             .then((data) => {
-                localStorage.setItem(
-                    "token",
-                    JSON.stringify({ token: data.token }),
-                );
-                navigate("/home");
+                if ("error_message" in data) {
+                    alert(data.error_message);
+                } else {
+                    localStorage.setItem(
+                        "token",
+                        JSON.stringify({ token: data.token }),
+                    );
+                    navigate("/home");
+                }
             });
     }
 
