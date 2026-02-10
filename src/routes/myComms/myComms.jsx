@@ -83,7 +83,13 @@ export default function MyComms() {
                             className="inputSend"
                             placeholder="Enviar mensagem..."
                         />
-                        <button type="submit" className="sendBtnComm">
+                        <button
+                            type="submit"
+                            className="sendBtnComm"
+                            onClick={() => {
+                                alert("Em desenvolvimento!");
+                            }}
+                        >
                             Enviar
                         </button>
                     </div>
